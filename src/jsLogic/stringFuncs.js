@@ -1,6 +1,13 @@
 // const whatsapp = require('whatsapp-chat-parser');
 import whatsapp from "whatsapp-chat-parser";
-
+let totalmsgsbyUserArrayObj = {};
+let totalmsgsbyUserObj = {};
+let picturesSentObj = {};
+let loveEmojiObj = {};
+let totalMsgsByDayObj = {};
+let totalMsgsByMonthObj = {};
+let totalMsgsByTIme = {};
+let avgResTimeObj = {};
 export const countTotalMsgs = (contents) => {
   whatsapp
     .parseString(contents)
@@ -11,12 +18,9 @@ export const countTotalMsgs = (contents) => {
       }
       let userArray = [];
       let dateArray = [];
-      let picturesSentObj = {};
+
       let actualMsgArray = [];
-      let totalmsgsbyUserArrayObj = {};
-      let totalmsgsbyUserObj = {};
-      let mediaSentByUserObj = {};
-      let userMsgObj = {};
+
       const defaultEmojiArray = [
         "🙄",
         "❤️",
@@ -60,7 +64,7 @@ export const countTotalMsgs = (contents) => {
         totalmsgsbyUserObj[u] = msgLength;
       });
       console.log("totalLetters used By userrs", totalmsgsbyUserObj);
-      let obb = {};
+
       let embb = {};
       //checking Number of media sent by users
       console.log("uniqueuserArray", uniqueUserArray);
@@ -128,10 +132,10 @@ export const countTotalMsgs = (contents) => {
             }
           }
           picturesSentObj[u] = mediaByuser;
-          obb[u] = emoji2;
+          loveEmojiObj[u] = emoji2;
         });
       });
-      console.log("heart emoji", obb);
+      console.log("heart emoji", loveEmojiObj);
       console.log("pictureobj", picturesSentObj);
 
       //checkimng emoji
@@ -153,9 +157,7 @@ export const countTotalMsgs = (contents) => {
       let weekDaysArray = [];
       let monthsArray = [];
       let timeArray = [];
-      let totalMsgsByDayObj = {};
-      let totalMsgsByMonthObj = {};
-      let totalMsgsByTIme = {};
+
       const DaysInWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
       const monthsInYear = [
         "Jan",
@@ -226,6 +228,7 @@ export const countTotalMsgs = (contents) => {
       console.log("msgs in a month obj", totalMsgsByMonthObj);
       console.log("msgs in a time obj", totalMsgsByTIme);
 
+      console.log("original msg araay", messages);
       let newUnixMsgArray = messages.map(
         (mess) =>
           mess.date !== null
@@ -233,11 +236,12 @@ export const countTotalMsgs = (contents) => {
             : mess
         // console.log(new Date(mess.date).getTime() / 1000);
       );
-      let avgResTimeObj = {};
+
       //sorting by unixTime is necessary or NOt???
       // newUnixMsgArray.sort((a, b) => {
       //   return a.date - b.date;
       // });
+      console.log("Unixmsg Array", newUnixMsgArray);
       uniqueUserArray.forEach((user) => {
         let totalrestime = 0;
         let counter = 0;
@@ -246,10 +250,16 @@ export const countTotalMsgs = (contents) => {
             newUnixMsgArray[i].author !== newUnixMsgArray[i + 1].author &&
             newUnixMsgArray[i + 1].author === user
           ) {
-            totalrestime =
-              totalrestime +
-              Math.abs(newUnixMsgArray[i + 1].date - newUnixMsgArray[i].date);
-            counter++;
+            // checking if user responding within 1000s
+            if (
+              Math.abs(newUnixMsgArray[i + 1].date - newUnixMsgArray[i].date) <
+              3000
+            ) {
+              totalrestime =
+                totalrestime +
+                Math.abs(newUnixMsgArray[i + 1].date - newUnixMsgArray[i].date);
+              counter++;
+            }
           }
         }
         avgResTimeObj[user] = totalrestime / counter;
@@ -262,3 +272,12 @@ export const countTotalMsgs = (contents) => {
       console.log(err);
     });
 };
+
+export const totalMsgByEachUser = totalmsgsbyUserArrayObj;
+export const totalLettersUsedObj = totalmsgsbyUserObj;
+export const totalMediaSentObj = picturesSentObj;
+export const totalLoveEmojiSentObj = loveEmojiObj;
+export const totalMsgsInDayObj = totalMsgsByDayObj;
+export const totalMsgsInMonthObj = totalMsgsByMonthObj;
+export const totalMsgsByTimeObj = totalMsgsByTIme;
+export const totalavgResTimeObj = avgResTimeObj;

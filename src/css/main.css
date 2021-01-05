@@ -2,7 +2,7 @@
   margin: 0%;
   min-width: 100vw;
   min-height: 100vh;
-  background-color: #040404;
+  background-color: #1f1f1f;
   color: #ffffff;
 }
 
@@ -19,7 +19,7 @@
 
 .dark .header {
   min-height: 10vh;
-  background-color: #202020;
+  background-color: #0e0e0e;
 }
 
 .dark .header .nav {
@@ -70,4 +70,40 @@
 .light p {
   margin: 0;
   padding: 0;
+}
+
+.light .header {
+  min-height: 10vh;
+  background-color: #5a787e;
+  color: #000;
+}
+
+.light .header .nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 20px 20px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.light .header .nav .logo {
+  font-size: 20px;
+  font-family: "Helvetica Neue", sans-serif;
+  font-style: italic;
+}
+
+.light .header .nav .right_nav {
+  padding-left: 10px;
+}
+
+.light .filePicker {
+  text-align: center;
+  padding: 20px 20px;
+}
+
+.light .filePicker .upload_btn {
+  padding: 20px;
+  font-size: 34px;
 }

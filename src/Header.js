@@ -8,7 +8,7 @@ function Header({ setisDark }) {
   return (
     <div className="header">
       <div className="nav">
-        <div className="logo">Chatlyser</div>
+        <div className="logo">Chat-Lyser</div>
         <div className="right_nav">
           <button onClick={themeHandler}>Toggle theme</button>
         </div>
