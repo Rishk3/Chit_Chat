@@ -12,7 +12,7 @@ export const countTotalMsgs = (contents) => {
   whatsapp
     .parseString(contents)
     .then((messages) => {
-      console.log(messages);
+      // console.log(messages);
       if (messages[0].author === "System") {
         messages.shift();
       }
@@ -51,7 +51,7 @@ export const countTotalMsgs = (contents) => {
       uniqueUserArray.forEach((user) => {
         totalmsgsbyUserArrayObj[user] = countOccurrences(userArray, user);
       });
-      console.log("totalmsgs by user", totalmsgsbyUserArrayObj);
+      //   console.log("totalmsgs by user", totalmsgsbyUserArrayObj);
 
       uniqueUserArray.forEach((u) => {
         let msgLength = 0;
@@ -63,12 +63,12 @@ export const countTotalMsgs = (contents) => {
         });
         totalmsgsbyUserObj[u] = msgLength;
       });
-      console.log("totalLetters used By userrs", totalmsgsbyUserObj);
+      //  console.log("totalLetters used By userrs", totalmsgsbyUserObj);
 
       let embb = {};
       //checking Number of media sent by users
-      console.log("uniqueuserArray", uniqueUserArray);
-      console.log("MessageArray", messages);
+      //  console.log("uniqueuserArray", uniqueUserArray);
+      //  console.log("MessageArray", messages);
       uniqueUserArray.forEach((u) => {
         let mediaByuser = 0;
         let emoji1 = 0;
@@ -135,8 +135,8 @@ export const countTotalMsgs = (contents) => {
           loveEmojiObj[u] = emoji2;
         });
       });
-      console.log("heart emoji", loveEmojiObj);
-      console.log("pictureobj", picturesSentObj);
+      //  console.log("heart emoji", loveEmojiObj);
+      // console.log("pictureobj", picturesSentObj);
 
       //checkimng emoji
 
@@ -151,7 +151,7 @@ export const countTotalMsgs = (contents) => {
         emojiObj[emoji] = emojicount;
       });
 
-      console.log("emojiObj", emojiObj);
+      //  console.log("emojiObj", emojiObj);
 
       //Date Manipulations
       let weekDaysArray = [];
@@ -224,11 +224,11 @@ export const countTotalMsgs = (contents) => {
         totalMsgsByTIme[time] = countOccurrences(timeDigitArray, time);
       });
 
-      console.log("msgs in a day obj", totalMsgsByDayObj);
-      console.log("msgs in a month obj", totalMsgsByMonthObj);
-      console.log("msgs in a time obj", totalMsgsByTIme);
+      // console.log("msgs in a day obj", totalMsgsByDayObj);
+      // console.log("msgs in a month obj", totalMsgsByMonthObj);
+      //  console.log("msgs in a time obj", totalMsgsByTIme);
 
-      console.log("original msg araay", messages);
+      //  console.log("original msg araay", messages);
       let newUnixMsgArray = messages.map(
         (mess) =>
           mess.date !== null
@@ -241,7 +241,7 @@ export const countTotalMsgs = (contents) => {
       // newUnixMsgArray.sort((a, b) => {
       //   return a.date - b.date;
       // });
-      console.log("Unixmsg Array", newUnixMsgArray);
+      // console.log("Unixmsg Array", newUnixMsgArray);
       uniqueUserArray.forEach((user) => {
         let totalrestime = 0;
         let counter = 0;
@@ -264,7 +264,7 @@ export const countTotalMsgs = (contents) => {
         }
         avgResTimeObj[user] = totalrestime / counter;
       });
-      console.log("Avg Response time in seconds", avgResTimeObj);
+      // console.log("Avg Response time in seconds", avgResTimeObj);
 
       //logic for calculating response time of user
     })

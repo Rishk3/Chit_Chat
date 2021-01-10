@@ -8,21 +8,31 @@ import NumberOfMsgs from "./NumberOfMsgs";
 import RawData from "./RawData";
 import ResponseTimeAvg from "./ResponseTimeAvg";
 import TimeGraph from "./TimeGraph";
-
-function DataCharts() {
+import Grid from "@material-ui/core/Grid";
+import { Paper } from "@material-ui/core";
+function DataCharts({ isDark }) {
   return (
-    <div>
+    <div className="dataCharts">
       {/* textData */}
-
       {/* GraphData */}
-      <NumberOfMsgs />
-      <AvgWordsUsedGraph />
+      <div>
+        <Grid container justify="space-around">
+          <Grid item xs={12} md={5} xl={4} className="grids">
+            <NumberOfMsgs isDark={isDark} />
+          </Grid>
+          <Grid item xs={12} md={5} xl={4} className="grids">
+            <AvgWordsUsedGraph />
+          </Grid>
+        </Grid>
+      </div>
+
+      {/* 
       <ResponseTimeAvg />
       <MediaGraph />
       <EmojiGraph />
       <DayGraph />
       <MonthGraph />
-      <TimeGraph />
+      <TimeGraph /> */}
     </div>
   );
 }

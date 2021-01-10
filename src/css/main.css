@@ -2,7 +2,7 @@
   margin: 0%;
   min-width: 100vw;
   min-height: 100vh;
-  background-color: #1f1f1f;
+  background-color: #121212;
   color: #ffffff;
 }
 
@@ -50,6 +50,20 @@
 .dark .filePicker .upload_btn {
   padding: 20px;
   font-size: 34px;
+}
+
+.dark .NumberOfMsgs .textDisplay {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.dark .dataCharts .grids {
+  padding: 30px 0px 0px 10px;
+  margin-top: 20px;
+  border: 1px solid #949494;
 }
 
 .light {

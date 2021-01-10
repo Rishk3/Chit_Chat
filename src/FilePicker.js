@@ -4,15 +4,13 @@ import { countTotalMsgs } from "./jsLogic/stringFuncs";
 import Button from "@material-ui/core/Button";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 
-function FilePicker() {
+function FilePicker({ isDark }) {
   const [file, setFile] = useState(null);
   const [isFileUploaded, setIsFileUploaded] = useState(false);
   const inputRef = useRef(null);
-
   const fileUploading = () => {
     inputRef.current.click();
   };
-
   const readSingleFile = (e) => {
     let fileName = e.target.files[0];
     if (fileName != null && fileName.type === "text/plain") {
@@ -21,15 +19,12 @@ function FilePicker() {
     } else {
       console.log("No files or txt files selected");
     }
-
-    // executes on load of file
     let reader = new FileReader();
     reader.readAsText(fileName);
     // console.log(reader.readAsText(fileName));
     reader.onload = (e) => {
       console.log("file uploading finished");
       let contents = e.target.result;
-
       let totalmsgs = countTotalMsgs(contents);
       setIsFileUploaded(true);
     };
@@ -107,7 +102,7 @@ function FilePicker() {
           </h5>
         </div>
       ) : (
-        <DataCharts />
+        <DataCharts isDark={isDark} />
       )}
     </div>
   );
