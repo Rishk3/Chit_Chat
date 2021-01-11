@@ -7,10 +7,27 @@ function Header({ setisDark }) {
 
   return (
     <div className="header">
-      <div className="nav">
-        <div className="logo">Chat-Lyser</div>
+      <div className="nav" style={{ justifyContent: "space-around" }}>
+        <div
+          className="logo"
+          style={{
+            color: "#fff",
+          }}
+        >
+          Chatayser
+        </div>
+
         <div className="right_nav">
-          <button onClick={themeHandler}>Toggle theme</button>
+          <input
+            onClick={themeHandler}
+            type="checkbox"
+            id="themeSwitch"
+            name="theme-switch"
+            class="theme-switch__input"
+          />
+          <label for="themeSwitch" class="theme-switch__label">
+            <span></span>
+          </label>
         </div>
       </div>
     </div>

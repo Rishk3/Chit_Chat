@@ -1,18 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { totalMsgByEachUser } from "./jsLogic/stringFuncs.js";
 import { Bar } from "react-chartjs-2";
+import { randomColors } from "./jsLogic/resuable.js";
 
 function NumberOfMsgs({ isDark }) {
   const [totalmsgArray, setTotalmsgArray] = useState([]);
-
-  //Generate Dynamic color
-  let dynamicColors = () => {
-    var r = Math.floor(Math.random() * (230 - 20) + 20);
-    var g = Math.floor(Math.random() * (230 - 20) + 20);
-    var b = Math.floor(Math.random() * (230 - 20) + 20);
-    return "rgb(" + r + "," + g + "," + b + ")";
-  };
-
   useEffect(() => {
     const entries = Object.entries(totalMsgByEachUser);
     setTotalmsgArray(entries);
@@ -20,7 +12,6 @@ function NumberOfMsgs({ isDark }) {
   const userNames = totalmsgArray.map((car) => car[0]); //userNames
   const usersMsgs = totalmsgArray.map((car) => car[1]); //Yaxis Msgs By each user
   //Graph Making UseEffect
-  useEffect(() => {}, [usersMsgs]);
 
   const userMsgData = totalmsgArray.map((entry) => {
     return (
@@ -53,6 +44,7 @@ function NumberOfMsgs({ isDark }) {
     title: {
       display: true,
       text: "Messages Sent By Each User",
+      fontColor: isDark ? "white" : "rgba(0,0,0,1)",
       fontSize: 20,
     },
     legend: {
@@ -63,7 +55,7 @@ function NumberOfMsgs({ isDark }) {
     labels: userNames,
     datasets: [
       {
-        backgroundColor: dynamicColors,
+        backgroundColor: randomColors,
         borderColor: isDark ? "white" : "rgba(0,0,0,1)",
         borderWidth: 2,
         data: usersMsgs,

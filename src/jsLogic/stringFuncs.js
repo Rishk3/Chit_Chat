@@ -1,9 +1,14 @@
 // const whatsapp = require('whatsapp-chat-parser');
 import whatsapp from "whatsapp-chat-parser";
+import { defaultEmojisGithub } from "./resuable.js";
+
 let totalmsgsbyUserArrayObj = {};
 let totalmsgsbyUserObj = {};
 let picturesSentObj = {};
 let loveEmojiObj = {};
+let laughEmojiObj = {};
+let mostCommonEmojiObj = {};
+let cmnEmj = {};
 let totalMsgsByDayObj = {};
 let totalMsgsByMonthObj = {};
 let totalMsgsByTIme = {};
@@ -133,12 +138,36 @@ export const countTotalMsgs = (contents) => {
           }
           picturesSentObj[u] = mediaByuser;
           loveEmojiObj[u] = emoji2;
+          laughEmojiObj[u] = emoji11;
         });
       });
       //  console.log("heart emoji", loveEmojiObj);
       // console.log("pictureobj", picturesSentObj);
 
       //checkimng emoji
+
+      defaultEmojisGithub.forEach((emoji) => {
+        let countOfEach = 0;
+        messages.forEach((msg) => {
+          if (msg.message.includes(emoji)) {
+            countOfEach++;
+          }
+        });
+        mostCommonEmojiObj[emoji] = countOfEach;
+      });
+
+      const entries = Object.entries(mostCommonEmojiObj);
+
+      let maxCommonEmoji = 0;
+      let emp = 0;
+      const pp = entries.map((entry, index) => {
+        if (entry[1] > maxCommonEmoji) {
+          maxCommonEmoji = entry[1];
+          emp = entry[0];
+        }
+      });
+
+      cmnEmj[emp] = maxCommonEmoji;
 
       defaultEmojiArray.forEach((emoji) => {
         let emojicount = 0;
@@ -277,7 +306,9 @@ export const totalMsgByEachUser = totalmsgsbyUserArrayObj;
 export const totalLettersUsedObj = totalmsgsbyUserObj;
 export const totalMediaSentObj = picturesSentObj;
 export const totalLoveEmojiSentObj = loveEmojiObj;
+export const totalLaughEmojiSentObj = laughEmojiObj;
 export const totalMsgsInDayObj = totalMsgsByDayObj;
 export const totalMsgsInMonthObj = totalMsgsByMonthObj;
 export const totalMsgsByTimeObj = totalMsgsByTIme;
 export const totalavgResTimeObj = avgResTimeObj;
+export const commonEmojiObj = cmnEmj;

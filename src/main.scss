@@ -15,10 +15,51 @@
   background-color: #121212;
   color: #ffffff;
 
+  .flex-bott {
+    display: flex;
+    flex-direction: column;
+  }
+  .faqGrid {
+    position: relative;
+
+    .item:hover {
+      transform: scale(1.01);
+      opacity: 1;
+    }
+    .item {
+      background-color: #292929;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+      border-radius: 15px;
+      padding: 20px 15px;
+      margin: 20px 0px;
+      flex-grow: 1;
+      .img {
+        width: 50%;
+        height: 200px;
+        object-fit: contain;
+        border-radius: 20px;
+      }
+      .title {
+        font-size: 20px;
+        letter-spacing: 2.5px;
+        margin: 10px;
+
+        margin-top: 25px;
+      }
+      .ans {
+        font-size: 14px;
+        text-align: left;
+        margin: 3px;
+        // list-style-type: none;
+      }
+    }
+  }
+
   //Header
   .header {
     min-height: 10vh;
-    background-color: #0e0e0e;
+    background-color: #000000;
     .nav {
       display: flex;
       padding: 20px 20px;
@@ -40,19 +81,28 @@
     text-align: center;
     padding: 20px 20px;
     .upload_btn {
+      background-color: #adc7c0;
       padding: 20px;
-      font-size: 34px;
+      border-radius: 15px;
+      outline: none;
+      border: 1px solid #000000;
+      box-shadow: 8px 8px 16px #4d4d4d;
+      font-size: 30px;
     }
   }
-
+  .faq {
+  }
+  .textDisplay {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .weekGraph {
+    background-color: #8a9ba5;
+  }
   //filePicker Ends
   //NumberOfMsgs starts
-  .NumberOfMsgs {
-    .textDisplay {
-      display: flex;
-      justify-content: space-around;
-    }
-  }
+
   //NumberOfMsgs ends
 
   .dataCharts {
@@ -82,6 +132,49 @@
   color: #000000;
   min-width: 100vw;
   min-height: 100vh;
+
+  //item container
+  .flex-bott {
+    display: flex;
+    flex-direction: column;
+  }
+  .faqGrid {
+    position: relative;
+
+    .item:hover {
+      transform: scale(1.01);
+      opacity: 1;
+    }
+    .item {
+      background-color: #dbdbdb;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+      border-radius: 15px;
+      padding: 20px 15px;
+      margin: 20px 0px;
+      flex-grow: 1;
+      .img {
+        width: 50%;
+        height: 200px;
+        object-fit: contain;
+        border-radius: 20px;
+      }
+      .title {
+        font-size: 20px;
+        letter-spacing: 2.5px;
+        margin: 10px;
+
+        margin-top: 25px;
+      }
+      .ans {
+        font-size: 14px;
+        text-align: left;
+        margin: 3px;
+        // list-style-type: none;
+      }
+    }
+  }
+
   .header {
     min-height: 10vh;
     background-color: #5a787e;
@@ -101,15 +194,147 @@
     }
   }
   //header end
+  .textDisplay {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
 
   //filePicker Starts
   .filePicker {
     text-align: center;
     padding: 20px 20px;
     .upload_btn {
+      background-color: #dbdbdb;
       padding: 20px;
-      font-size: 34px;
+      border-radius: 15px;
+      outline: none;
+      border: 1px solid #bbbbbb;
+      box-shadow: 8px 8px 16px #949494;
+      font-size: 30px;
     }
     //filepicker end
   }
+  .dataCharts {
+    .grids {
+      padding: 30px 0px 0px 10px;
+      margin-top: 20px;
+      border: 1px solid #313131;
+    }
+  }
+}
+
+p {
+  font-size: 14px;
+}
+
+label,
+main {
+  background: var(--bg, white);
+  color: var(--text, black);
+}
+
+.theme-switch__input:checked ~ main,
+.theme-switch__input:checked ~ label {
+  --text: white;
+}
+
+.theme-switch__input:checked ~ main {
+  --gradDark: hsl(198, 44%, 11%);
+  --gradLight: hsl(198, 39%, 29%);
+}
+
+// Toggle switch
+.theme-switch__input,
+.theme-switch__label {
+  position: absolute;
+  z-index: 1;
+}
+
+.theme-switch__input {
+  opacity: 0;
+  &:hover,
+  &:focus {
+    + .theme-switch__label {
+      background-color: lightSlateGray;
+    }
+
+    + .theme-switch__label span::after {
+      background-color: lighten(lightBlue, 10%);
+    }
+  }
+}
+
+.theme-switch__label {
+  padding: 0px;
+  transition: background-color 200ms ease-in-out;
+  width: 50px;
+  height: 30px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: slateGray;
+  box-shadow: -4px 4px 15px inset rgba(0, 0, 0, 0.4);
+  &::before,
+  &::after {
+    font-size: 2rem;
+    position: absolute;
+    transform: translate3d(0, -50%, 0);
+    top: 50%;
+  }
+
+  &::before {
+    content: "\263C";
+    right: 100%;
+    margin-right: 10px;
+    color: orange;
+  }
+
+  &::after {
+    content: "\263E";
+    left: 100%;
+    margin-left: 10px;
+    color: lightSlateGray;
+  }
+
+  span {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 0;
+    width: 100%;
+  }
+
+  span::after {
+    position: absolute;
+    top: calc(100% + 18px);
+    left: 5px;
+    width: 15px;
+    height: 15px;
+    content: " ";
+    border-radius: 50%;
+    background-color: lightBlue;
+    transition: transform 200ms, background-color 200ms;
+    box-shadow: -3px 3px 8px rgba(0, 0, 0, 0.4);
+  }
+}
+
+// Checked label styles
+.theme-switch__input:checked ~ .theme-switch__label {
+  background-color: lightSlateGray;
+
+  &::before {
+    color: lightSlateGray;
+  }
+
+  &::after {
+    color: turquoise;
+  }
+
+  span::after {
+    transform: translate3d(70px, 0, 0);
+  }
+}
+
+.whatsapp_img {
+  max-width: 20px;
+  object-fit: contain;
 }

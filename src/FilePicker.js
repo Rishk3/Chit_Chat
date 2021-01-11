@@ -3,6 +3,7 @@ import DataCharts from "./DataCharts";
 import { countTotalMsgs } from "./jsLogic/stringFuncs";
 import Button from "@material-ui/core/Button";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
+import FAQ from "./FAQ";
 
 function FilePicker({ isDark }) {
   const [file, setFile] = useState(null);
@@ -34,29 +35,20 @@ function FilePicker({ isDark }) {
     <div className="filePicker">
       {!isFileUploaded ? (
         <div>
-          <p>Please Follow the Steps Given Below</p>
-          <h2 style={{ margin: "20px" }}>Click And Select your file</h2>
-          <button className="upload_btn" onClick={fileUploading}>
-            Upload Now
-          </button>
-          <input
-            required
-            ref={inputRef}
-            type="file"
-            accept=".txt"
-            hidden
-            onChange={(e) => {
-              readSingleFile(e);
-            }}
-          ></input>
-          <p>{file}</p>
-          <ul style={{ textAlign: "left" }}>
-            <h2 style={{ textAlign: "center" }}>Steps to follow</h2>
+          <h2 style={{ textAlign: "left", fontWeight: "600" }}>
+            Have you ever wondered what's going on in your WhatsApp groups?
+            Well, We Might Help You
+          </h2>
+
+          <ul style={{ textAlign: "left", margin: "20px" }}>
+            <h2 style={{ textAlign: "left", fontWeight: "500" }}>
+              Steps to follow
+            </h2>
             <li>Step 1: Go to Whatsapp contact or group</li>
             <li>
-              Step 2: click on the right corner and select "EXPORT CHAT" option{" "}
+              Step 2: Click on the right corner and select "EXPORT CHAT" option{" "}
             </li>
-            <li>Step 3: select Without Media and email to yourself </li>
+            <li>Step 3: Select Without Media and email to yourself </li>
             <li>
               Step 4: Now download the .txt file from recived Email to your
               local storage
@@ -69,37 +61,28 @@ function FilePicker({ isDark }) {
               As soon you pick the desired .txt file it will automatically show
               the result
             </li>
+            <li>
+              You May also take The print out of the Statistics Page, and Share
+              it with whom you like
+            </li>
           </ul>
-          <h3 style={{ margin: "20px" }}>
-            Your Privacy is Our Top Priority, Nothing is Sent to Server
-          </h3>
-          <h3 style={{ margin: "20px" }}>
-            You can Upload your File after turning off Your internet conncetion
-            if you dont trust me
-          </h3>
+          <p>Click And Select your file</p>
+          <button className="upload_btn" onClick={fileUploading}>
+            Upload Your .txt File
+          </button>
+          <input
+            required
+            ref={inputRef}
+            type="file"
+            accept=".txt"
+            hidden
+            onChange={(e) => {
+              readSingleFile(e);
+            }}
+          ></input>
+          <p>{file}</p>
 
-          <h5>
-            For Any Query Contact Rishk3
-            <a
-              className="social_icon"
-              rel="noopener noreferrer"
-              target="_blank"
-              href="https://api.whatsapp.com/send?phone=+918423766435&text=Hey, I Saw your ChatLyser Project.."
-            >
-              <Button>
-                <WhatsAppIcon
-                  style={{
-                    marginTop: "-3px",
-                    color: "#fff",
-                    backgroundColor: "#25D366",
-                    borderRadius: "50%",
-                    padding: "1px",
-                    fontSize: "24px",
-                  }}
-                />
-              </Button>
-            </a>
-          </h5>
+          <FAQ />
         </div>
       ) : (
         <DataCharts isDark={isDark} />

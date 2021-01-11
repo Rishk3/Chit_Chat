@@ -17,9 +17,63 @@
   padding: 0;
 }
 
+.dark .flex-bott {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.dark .faqGrid {
+  position: relative;
+}
+
+.dark .faqGrid .item:hover {
+  -webkit-transform: scale(1.01);
+          transform: scale(1.01);
+  opacity: 1;
+}
+
+.dark .faqGrid .item {
+  background-color: #292929;
+  opacity: 0.8;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  border-radius: 15px;
+  padding: 20px 15px;
+  margin: 20px 0px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.dark .faqGrid .item .img {
+  width: 50%;
+  height: 200px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 20px;
+}
+
+.dark .faqGrid .item .title {
+  font-size: 20px;
+  letter-spacing: 2.5px;
+  margin: 10px;
+  margin-top: 25px;
+}
+
+.dark .faqGrid .item .ans {
+  font-size: 14px;
+  text-align: left;
+  margin: 3px;
+}
+
 .dark .header {
   min-height: 10vh;
-  background-color: #0e0e0e;
+  background-color: #000000;
 }
 
 .dark .header .nav {
@@ -48,16 +102,28 @@
 }
 
 .dark .filePicker .upload_btn {
+  background-color: #adc7c0;
   padding: 20px;
-  font-size: 34px;
+  border-radius: 15px;
+  outline: none;
+  border: 1px solid #000000;
+  -webkit-box-shadow: 8px 8px 16px #4d4d4d;
+          box-shadow: 8px 8px 16px #4d4d4d;
+  font-size: 30px;
 }
 
-.dark .NumberOfMsgs .textDisplay {
+.dark .textDisplay {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.dark .weekGraph {
+  background-color: #8a9ba5;
 }
 
 .dark .dataCharts .grids {
@@ -86,6 +152,60 @@
   padding: 0;
 }
 
+.light .flex-bott {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.light .faqGrid {
+  position: relative;
+}
+
+.light .faqGrid .item:hover {
+  -webkit-transform: scale(1.01);
+          transform: scale(1.01);
+  opacity: 1;
+}
+
+.light .faqGrid .item {
+  background-color: #dbdbdb;
+  opacity: 0.8;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  border-radius: 15px;
+  padding: 20px 15px;
+  margin: 20px 0px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.light .faqGrid .item .img {
+  width: 50%;
+  height: 200px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 20px;
+}
+
+.light .faqGrid .item .title {
+  font-size: 20px;
+  letter-spacing: 2.5px;
+  margin: 10px;
+  margin-top: 25px;
+}
+
+.light .faqGrid .item .ans {
+  font-size: 14px;
+  text-align: left;
+  margin: 3px;
+}
+
 .light .header {
   min-height: 10vh;
   background-color: #5a787e;
@@ -112,12 +232,154 @@
   padding-left: 10px;
 }
 
+.light .textDisplay {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
 .light .filePicker {
   text-align: center;
   padding: 20px 20px;
 }
 
 .light .filePicker .upload_btn {
+  background-color: #dbdbdb;
   padding: 20px;
-  font-size: 34px;
+  border-radius: 15px;
+  outline: none;
+  border: 1px solid #bbbbbb;
+  -webkit-box-shadow: 8px 8px 16px #949494;
+          box-shadow: 8px 8px 16px #949494;
+  font-size: 30px;
+}
+
+.light .dataCharts .grids {
+  padding: 30px 0px 0px 10px;
+  margin-top: 20px;
+  border: 1px solid #313131;
+}
+
+p {
+  font-size: 14px;
+}
+
+label,
+main {
+  background: var(--bg, white);
+  color: var(--text, black);
+}
+
+.theme-switch__input:checked ~ main,
+.theme-switch__input:checked ~ label {
+  --text: white;
+}
+
+.theme-switch__input:checked ~ main {
+  --gradDark: hsl(198, 44%, 11%);
+  --gradLight: hsl(198, 39%, 29%);
+}
+
+.theme-switch__input,
+.theme-switch__label {
+  position: absolute;
+  z-index: 1;
+}
+
+.theme-switch__input {
+  opacity: 0;
+}
+
+.theme-switch__input:hover + .theme-switch__label, .theme-switch__input:focus + .theme-switch__label {
+  background-color: lightSlateGray;
+}
+
+.theme-switch__input:hover + .theme-switch__label span::after, .theme-switch__input:focus + .theme-switch__label span::after {
+  background-color: #d4ebf2;
+}
+
+.theme-switch__label {
+  padding: 0px;
+  -webkit-transition: background-color 200ms ease-in-out;
+  transition: background-color 200ms ease-in-out;
+  width: 50px;
+  height: 30px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: slateGray;
+  -webkit-box-shadow: -4px 4px 15px inset rgba(0, 0, 0, 0.4);
+          box-shadow: -4px 4px 15px inset rgba(0, 0, 0, 0.4);
+}
+
+.theme-switch__label::before, .theme-switch__label::after {
+  font-size: 2rem;
+  position: absolute;
+  -webkit-transform: translate3d(0, -50%, 0);
+          transform: translate3d(0, -50%, 0);
+  top: 50%;
+}
+
+.theme-switch__label::before {
+  content: "\263C";
+  right: 100%;
+  margin-right: 10px;
+  color: orange;
+}
+
+.theme-switch__label::after {
+  content: "\263E";
+  left: 100%;
+  margin-left: 10px;
+  color: lightSlateGray;
+}
+
+.theme-switch__label span {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 0;
+  width: 100%;
+}
+
+.theme-switch__label span::after {
+  position: absolute;
+  top: calc(100% + 18px);
+  left: 5px;
+  width: 15px;
+  height: 15px;
+  content: " ";
+  border-radius: 50%;
+  background-color: lightBlue;
+  -webkit-transition: background-color 200ms, -webkit-transform 200ms;
+  transition: background-color 200ms, -webkit-transform 200ms;
+  transition: transform 200ms, background-color 200ms;
+  transition: transform 200ms, background-color 200ms, -webkit-transform 200ms;
+  -webkit-box-shadow: -3px 3px 8px rgba(0, 0, 0, 0.4);
+          box-shadow: -3px 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+.theme-switch__input:checked ~ .theme-switch__label {
+  background-color: lightSlateGray;
+}
+
+.theme-switch__input:checked ~ .theme-switch__label::before {
+  color: lightSlateGray;
+}
+
+.theme-switch__input:checked ~ .theme-switch__label::after {
+  color: turquoise;
+}
+
+.theme-switch__input:checked ~ .theme-switch__label span::after {
+  -webkit-transform: translate3d(70px, 0, 0);
+          transform: translate3d(70px, 0, 0);
+}
+
+.whatsapp_img {
+  max-width: 20px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
