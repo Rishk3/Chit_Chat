@@ -25,6 +25,7 @@
     .item:hover {
       transform: scale(1.01);
       opacity: 1;
+      cursor: pointer;
     }
     .item {
       background-color: #292929;
@@ -143,6 +144,7 @@
 
     .item:hover {
       transform: scale(1.01);
+      cursor: pointer;
       opacity: 1;
     }
     .item {
