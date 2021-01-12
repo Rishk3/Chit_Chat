@@ -25,7 +25,11 @@ function Header({ setisDark }) {
             name="theme-switch"
             class="theme-switch__input"
           />
-          <label for="themeSwitch" class="theme-switch__label">
+          <label
+            style={{ cursor: "pointer" }}
+            for="themeSwitch"
+            class="theme-switch__label"
+          >
             <span></span>
           </label>
         </div>
