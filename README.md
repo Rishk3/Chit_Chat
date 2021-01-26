@@ -1,4 +1,5 @@
-# [Live Site at](https://rishk3lyser.netlify.app/)
+# [Check Live](https://rishk3lyser.netlify.app/)
+## at https://rishk3lyser.netlify.app/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
